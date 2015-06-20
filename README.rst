@@ -40,11 +40,11 @@ Installation
 
 #. Transpile JavaScript (must install node)::
 
-  $ make compile-es6
+   $ make compile-es6
 
 #. Watch js files for changes to compile (for developers only)::
 
-  $ make watch-es6
+   $ make watch-es6
 
 #. Run the server::
 
