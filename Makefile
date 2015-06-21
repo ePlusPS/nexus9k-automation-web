@@ -8,7 +8,7 @@ STATIC_PATH = $(APP_NAME)/static
 .PHONY: compile-es6 compile-scss install run watch-esc6 watch-scss
 
 compile-es6:
-	babel $(ES6_PATH)/main.js --out-file $(STATIC_PATH)/js/main-compiled.js
+	babel $(ES6_PATH)/main.js --out-file $(STATIC_PATH)/js/main-compiled.js --compact=true
 
 compile-scss:
 	sassc $(SCSS_PATH)/main.scss $(STATIC_PATH)/css/main.css --output-style compressed
