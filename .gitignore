@@ -9,6 +9,7 @@ __pycache__
 */local_settings.py
 media
 nexus9k_automation/static/css/main.css
+nexus9k_automation/static/js/main-compiled.js
 node_modules
 
 asset
