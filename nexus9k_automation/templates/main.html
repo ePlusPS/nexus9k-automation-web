@@ -2,12 +2,58 @@
 <!doctype html>
 <html>
   <head>
-    <link href="{% static 'css/main.css' %}">
-    <script src="{% static 'js/main-compiled.js' %}"></script>
+    <title>Nexus9k Automation Tool</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script src="{% static 'node_modules/babel-core/browser-polyfill.min.js' %}"></script>
   </head>
   <body>
     <div class="container">
+      <header id="header">
+        <img src="http://1-cloud.net/wp-content/uploads/2014/12/ext-e1423455969481.jpg">
+      </header>
+      <div class="main-content">
+        <div id="get-started" class="">
 
+        </div>
+        <svg class="typology">
+          <rect width="300" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+        </svg>
+        <table>
+          <thead>
+            <tr>
+              <th>Switch</th>
+              <th>Hostname</th>
+              <th>Management IP Address</th>
+              <th>Loopback Number</th>
+              <th>IP Address Lookup</th>
+              <th>Interface Count</th>
+              <th>Interface1</th>
+              <th>Interface1 IP Address</th>
+              <th>Interface2</th>
+              <th>Interface2 IP Address</th>
+              <th>Interface2 IP Address</th>
+              <th>Interface2 IP Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td contenteditable="true">Spine 1</td>
+              <td contenteditable="true">N9k-Spine-1</td>
+              <td contenteditable="true">10.1.1.1</td>
+              <td contenteditable="true">0</td>
+              <td contenteditable="true">10.1.1.1/32</td>
+              <td contenteditable="true">2</td>
+              <td contenteditable="true">1/1/2015</td>
+              <td contenteditable="true">192.169.1.2/30</td>
+              <td contenteditable="true">1/2/2015</td>
+              <td contenteditable="true">192.169.2.2/30</td>
+              <td contenteditable="true">192.169.2.2/30</td>
+              <td contenteditable="true">192.169.2.2/30</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+    <script src="{% static 'js/main-compiled.js' %}"></script>
   </body>
 </html>
