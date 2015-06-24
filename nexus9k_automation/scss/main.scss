@@ -48,6 +48,64 @@ body {
   padding: 18px 65px 18px 55px;
 }
 
+.conversion-options {
+  font-size: 19px;
+}
+
+.cisco span {
+  margin-left: 8px;
+}
+
+.conversion-options img {
+  height: 36px;
+  -webkit-filter: grayscale(100%);
+  opacity: .7;
+}
+
+.conversion-options > strong {
+  font-size: 17px;
+  position: relative;
+  top: 0;
+}
+
+.cisco img {
+  height: 31px;
+}
+
+.cisco span {
+  position: relative;
+  bottom: -7px;
+  font-size: 17px;
+  color: #666;
+  margin-left: 3px;
+}
+
+.cisco a {
+  text-decoration: none;
+}
+
+.conversion-options > span {
+  margin: 0 10px;
+}
+
+.conversion-options > span:hover img {
+  -webkit-filter: none;
+  opacity: 1;
+}
+
+small {
+  margin-right: 10px;
+}
+
+.conversion-options small {
+  font-size: 94%;
+}
+
+.conversion-options,
+.conversion-options * {
+  vertical-align: middle;
+}
+
 button {
   outline: none;
 }
