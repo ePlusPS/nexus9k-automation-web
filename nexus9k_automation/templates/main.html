@@ -127,7 +127,7 @@
 
         document.querySelector('.generate').addEventListener('click', function () {
           $.ajax({
-            url: 'http://104.236.21.104:9090/nexus_config_cli/convert/',
+            url: 'http://104.236.21.104:9090/nexus_config_cli/convert/?config_csv=',
               context: document.body,
               dataType: 'jsonp'
             }).done(function() {

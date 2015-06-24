@@ -15,7 +15,6 @@ compile-scss:
 
 install:
 	pip install -r requirements.txt
-	npm install
 
 run:
 	python manage.py runserver
