@@ -19,7 +19,7 @@
 }
 
 .gop {
-  font-size: 24px;
+  font-size: 33px;
   font-weight: 300;
   margin-bottom: 28px;
 }
@@ -38,14 +38,14 @@ body {
 
 .topology {
   display: block;
-  width: 250px;
+  width: 190px;
   float: right;
-  margin-left: 30px;
+  margin-left: 60px;
 }
 
 .overflow-hidden {
   overflow: hidden;
-  padding: 18px 55px;
+  padding: 18px 65px 18px 55px;
 }
 
 button {
@@ -53,7 +53,7 @@ button {
 }
 
 .gop {
-  margin-top: 20px;
+  margin-top: 26px;
 }
 
 .container {
@@ -123,13 +123,14 @@ button {
 }
 
 .move-abit {
-  margin-left: 5px;
+  margin-left: 6px;
 }
 
 .left {
   float: left;
   margin-right: 100px;
   margin-top: 5px;
+  width: 305px;
 }
 
 .clear {
