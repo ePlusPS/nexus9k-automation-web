@@ -36,7 +36,7 @@
 }
 
 #get-started p {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 body {
@@ -47,6 +47,7 @@ body {
   display: block;
   width: 190px;
   float: right;
+  margin-top: 58px;
   margin-left: 60px;
 }
 
@@ -55,12 +56,8 @@ body {
   padding: 18px 65px 18px 55px;
 }
 
-.conversion-options {
-  font-size: 19px;
-}
-
 .cisco span {
-  margin-left: 8px;
+  margin-left: 0 !important;
 }
 
 .conversion-options img {
@@ -69,10 +66,14 @@ body {
   opacity: .7;
 }
 
+.conversion-options {
+  margin-top: 18px;
+}
+
 .conversion-options > strong {
   font-size: 17px;
-  position: relative;
-  top: 0;
+  display: block;
+  margin-bottom: 5px;
 }
 
 #NX-API,
@@ -91,6 +92,19 @@ body {
   padding: 7px 18px;
   border-radius: 4px;
   margin-bottom: 12px;
+}
+
+.conversion-options span {
+  margin: 0 5px;
+  display: inline-block;
+
+  a {
+    display: block;
+
+    img {
+      display: block;
+    }
+  }
 }
 
 .c input {
@@ -120,7 +134,7 @@ body {
   position: absolute;
   left: 100%;
   margin-left: 6px;
-  top: 4px
+  top: 4px;
 }
 
 .c div {
@@ -140,16 +154,11 @@ body {
   text-decoration: none;
 }
 
-.conversion-options > span {
-  margin: 0 6px;
-}
-
 .cisco {
   margin-right: 4px !important;
-  margin-left: 8px !important;
 }
 
-.conversion-options > span:hover img {
+.conversion-options span:hover img {
   -webkit-filter: none;
   opacity: 1;
 }
@@ -168,11 +177,9 @@ body {
   position: absolute;
   left: 0;
   width: 100%;
-  top: 87%;
   color: #777;
   font-size: 11px;
   white-space: nowrap;
-  margin-left: 0 !important;
 }
 
 small {

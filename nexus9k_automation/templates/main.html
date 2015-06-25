@@ -31,13 +31,21 @@
             <div class="hidden">
               <h2 class="gop">Automating Nexus 9000 Deployment</h2>
               <p>
-                Now there’s an easier way to provision Ethernet VPN (EVPN) in your Data Center using the Nexus
-                9000 automation tool.
+                Now there's an easier way to provision your Data Center!
+
+                With the Nexus 9000 automation tool, you can generate CLI configurations for repetitive tasks that are based on Cisco best practices.
               </p>
-              <div class="conversion-options"><strong><small>Conversion options:</small></strong>
-                <span class="cisco"><a target="_blank" href="http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/6-x/programmability/guide/b_Cisco_Nexus_9000_Series_NX-OS_Programmability_Guide/b_Cisco_Nexus_9000_Series_NX-OS_Programmability_Configuration_Guide_chapter_0101.pdf"><img src="{% static 'img/cisco.gif' %}"><span>NX-API</span></a></span>
-                <span><a target="_blank" href="http://www.ansible.com/home"><img src="{% static 'img/ansible-logo.png' %}"></a></span>
-                <span><a target="_blank" href="https://puppetlabs.com/"><img src="{% static 'img/puppet-labs-logo.png' %}"></a></span>
+              <p>
+                Simply select a configuration type, input your configuration variables (or use the ones provided), then copy/paste the generated CLI's to your Nexus 9000 switches.
+              </p>
+              <div class="conversion-options"><strong><small>Conversion options:</small> <div class="row" style="display: inline-block; margin-left: 5px;">
+                    <span class="cisco"><a target="_blank" href="http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/6-x/programmability/guide/b_Cisco_Nexus_9000_Series_NX-OS_Programmability_Guide/b_Cisco_Nexus_9000_Series_NX-OS_Programmability_Configuration_Guide_chapter_0101.pdf"><img src="{% static 'img/cisco.gif' %}"><span>NX-API</span></a></span>
+                    <span><a target="_blank" href="http://www.ansible.com/home"><img src="{% static 'img/ansible-logo.png' %}"></a></span>
+                    <span><a target="_blank" href="https://puppetlabs.com/"><img src="{% static 'img/puppet-labs-logo.png' %}"></a></span>
+                  </div></strong>
+                  <p>
+                    Optionally, convert the generated CLI configurations into syntax that can be consumed by Cisco NX-API,  Puppet, or Ansible for further customization.
+                  </p>
               </div>
             </div>
             <!--
@@ -48,7 +56,7 @@
         <h2 class="headline">Step 1: Select Configuration Type to Automate</h2>
         <div class="add-padding">
           <select id="automation-select">
-            <option>VXLAN with MP-BGP EVPN Control Plane</option>
+            <option>EVPN: VXLAN with MP-BGP Overlay</option>
           </select>
         </div>
         <h2 class="headline singled">Step 2: Define Configuration Variables</h2>
