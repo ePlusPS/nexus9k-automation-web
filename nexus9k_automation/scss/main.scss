@@ -68,6 +68,12 @@ body {
   top: 0;
 }
 
+#NX_API,
+#Puppet,
+#Ansible {
+  display: none;
+}
+
 .cisco img {
   height: 31px;
 }
@@ -85,7 +91,12 @@ body {
 }
 
 .conversion-options > span {
-  margin: 0 10px;
+  margin: 0 6px;
+}
+
+.cisco {
+  margin-right: 4px !important;
+  margin-left: 8px !important;
 }
 
 .conversion-options > span:hover img {
@@ -93,12 +104,32 @@ body {
   opacity: 1;
 }
 
+.cisco {
+  position: relative;
+  text-align: center;
+}
+
+.cisco img {
+  margin-top: -12px;
+  height: 17px;
+}
+
+.cisco span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 84%;
+  font-size: 12px;
+  white-space: nowrap;
+  margin-left: 0 !important;
+}
+
 small {
   margin-right: 10px;
 }
 
 .conversion-options small {
-  font-size: 94%;
+  font-size: 91%;
 }
 
 .conversion-options,
