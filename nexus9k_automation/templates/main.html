@@ -135,8 +135,13 @@
 
           var reader = new FileReader();
           reader.onload = function(event) {
-            var converturl = "http://104.236.21.104:9090/nexus_config_cli/convert/?config_csv=" + event.target.result;
-            document.location.href = converturl;
+            $.ajax({
+              url: "http://104.236.21.104:9090/nexus_config_cli/convert/?config_csv=" + event.target.result,
+              method: "POST",
+              dataType: 'jsonp'
+            }).done(function( data ) {
+              console.log(data);
+            });
           }
 
           reader.readAsText(file);
