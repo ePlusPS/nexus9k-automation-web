@@ -138,7 +138,8 @@
             $.ajax({
               url: "http://104.236.21.104:9090/nexus_config_cli/convert/?config_csv=" + event.target.result,
               method: "POST",
-              dataType: 'jsonp'
+              dataType: 'jsonp',
+              contentType: 'multipart/form-data',
             }).done(function( data ) {
               console.log(data);
             });
