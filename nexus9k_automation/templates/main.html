@@ -3,6 +3,7 @@
 <html>
   <head>
     <title>Nexus9k Automation Tool</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <script src="{% static 'node_modules/babel-core/browser-polyfill.min.js' %}"></script>
     <script src="{% static 'js/jquery-1.11.2.min.js' %}"></script>
@@ -91,13 +92,16 @@
           </p>
         </div>
         <h2 class="headline no-space">Step 4: Convert CLI Configuration to NX-API/Puppet/Ansible (Programmable Option)</h2>
-        <div class="hidden width-80">
+        <div class="hidden">
           <div class="left">
             <p>Convert using the CLI configuration generated above.</p>
             <div class="or"><span>or</span></div>
             <div class="file-wrapper"><button>Upload Custom CLI Configuration</button><input type="file"></div>
             <br><br>
-            <div style="white-space: nowrap">
+          </div>
+          <i class="fa fa-chevron-circle-right" style="float: left;"></i>
+          <div style="float: left; width: 500px;">
+            <div style="white-space: nowrap; margin-bottom: 10px">
               <span>Select the format to convert the configuration to: </span>
               <select id="automation-format" class="move-abit">
                 <option>NX-API</option>
@@ -105,19 +109,50 @@
                 <option>Ansible</option>
               </select>
             </div>
-            <div id="NX_API">
-
+            <div id="NX-API" style="display: block" class="c">
+              <p class="mn">
+                Fill the information and convert the CLI Command's text file to NXAPI Switch OFF-Box python script.
+              </p>
+              <div>
+                <input type="text" placeholder="Switch IP Address">
+              </div>
+              <div>
+                <input type="text" placeholder="Switch Username">
+              </div>
+              <div>
+                <input type="text" placeholder="Switch Password">
+              </div>
+              <div class="output">
+                <input type="text" placeholder="Output Filename">
+              </div>
             </div>
-            <div id="Puppet">
-
+            <div id="Puppet" class="c">
+              <p class="mn">
+                Fill the information and convert the CLI Command's text file to Puppet manifest.
+              </p>
+              <div>
+                <input type="text" placeholder="Classname">
+              </div>
+              <div class="output">
+                <input type="text" placeholder="Output Filename">
+              </div>
             </div>
-            <div id="Ansible">
-
+            <div id="Ansible" class="c">
+              <p class="mn">
+                Fill the information and convert the CLI Command's text file to Ansible Playbook.
+              </p>
+              <div>
+                <input type="text" placeholder="Description">
+              </div>
+              <div>
+                <input type="text" placeholder="Host">
+              </div>
+              <div class="output">
+                <input type="text" placeholder="Output Filename">
+              </div>
             </div>
-            <br>
             <button class="download-l">Convert and Download</button>
           </div>
-          <i class="fa fa-chevron-circle-right" style="float: left;"></i>
         </div>
       </div>
     </div>
@@ -152,10 +187,16 @@
 
         });
 
-        $('#automation-format').change(function (e) {
+        var previous = '';
+
+        $('#automation-format').on('focus', function () {
+          previous = this.value;
+        }).change(function(e) {
+          $('#' + previous).hide();
           $('#' + e.target.value).toggle();
+          previous = this.value;
         });
       }());
-    </script
+    </script>
   </body>
 </html>

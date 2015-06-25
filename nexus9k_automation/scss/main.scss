@@ -12,6 +12,13 @@
   }
 }
 
+.fa-chevron-circle-right {
+  margin-right: 66px;
+  margin-top: 49px;
+  font-size: 22px;
+  color: #666;
+}
+
 .container {
   background: white;
   margin: 0 auto;
@@ -68,7 +75,7 @@ body {
   top: 0;
 }
 
-#NX_API,
+#NX-API,
 #Puppet,
 #Ansible {
   display: none;
@@ -78,11 +85,54 @@ body {
   height: 31px;
 }
 
+.mn {
+  font-size: 95%;
+  background: #fafafa;
+  padding: 7px 18px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.c input {
+  border: 1px solid #ddd;
+  width: 230px;
+  box-sizing: border-box;
+  padding: 4px 10px;
+  color: inherit;
+  outline: none;
+  border-radius: 2px;
+
+  &:hover {
+    border-color: #bbb;
+  }
+
+  &:focus {
+    border-color: #999;
+  }
+}
+
+.output {
+  position: relative;
+}
+
+.output:after {
+  content: '.py';
+  position: absolute;
+  left: 100%;
+  margin-left: 6px;
+  top: 4px
+}
+
+.c div {
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
 .cisco span {
   position: relative;
-  bottom: -7px;
+  bottom: -15px;
   font-size: 17px;
-  color: #666;
+  color: #6a6a6a;
   margin-left: 3px;
 }
 
@@ -118,8 +168,9 @@ body {
   position: absolute;
   left: 0;
   width: 100%;
-  top: 84%;
-  font-size: 12px;
+  top: 87%;
+  color: #777;
+  font-size: 11px;
   white-space: nowrap;
   margin-left: 0 !important;
 }
@@ -159,7 +210,7 @@ button {
 }
 
 .download-l {
-  margin-top: 15px;
+  margin-top: 6px;
 }
 
 select {
@@ -217,7 +268,7 @@ button {
 
 .left {
   float: left;
-  margin-right: 100px;
+  margin-right: 70px;
   margin-top: 5px;
   width: 305px;
 }
