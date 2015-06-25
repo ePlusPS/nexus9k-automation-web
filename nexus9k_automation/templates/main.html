@@ -81,7 +81,7 @@
           <div class="left">
             <p>Generate CLI configuration from the table above.</p>
             <div class="or"><span>or</span></div>
-            <div class="file-wrapper"><button>Upload Custom CSV Configuration</button><input type="file"></div>
+            <div class="file-wrapper"><button>Upload Custom CSV Configuration</button><input type="file" id="generate-cli"></div>
             <button class="generate">Generate CLI Configuration</button>
           </div>
           <p class="clear desc">
@@ -131,13 +131,15 @@
         });
 
         document.querySelector('.generate').addEventListener('click', function () {
-          $.ajax({
-            url: 'http://104.236.21.104:9090/nexus_config_cli/convert/?config_csv=',
-              context: document.body,
-              dataType: 'jsonp'
-            }).done(function() {
-            console.log(this);
-          });
+          file = document.querySelector('#generate-cli').files[0];
+
+          var reader = new FileReader();
+          reader.onload = function(event) {
+            var converturl = "http://104.236.21.104:9090/nexus_config_cli/convert/?config_csv=" + event.target.result;
+            document.location.href = converturl;
+          }
+
+          reader.readAsText(file);
         });
 
         document.querySelector('.download-l').addEventListener('click', function () {
@@ -145,7 +147,6 @@
         });
 
         $('#automation-format').change(function (e) {
-
           $('#' + e.target.value).toggle();
         });
       }());
