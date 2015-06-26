@@ -104,7 +104,7 @@
           <div class="left">
             <p>Convert using the CLI configuration generated above.</p>
             <div class="or"><span>or</span></div>
-            <div class="file-wrapper"><button>Upload Custom CLI Configuration</button><input type="file"></div>
+            <div class="file-wrapper"><button>Upload Custom CLI Configuration</button><input type="file" id="code_file" ></div>
             <br><br>
           </div>
           <i class="fa fa-chevron-circle-right" style="float: left;"></i>
@@ -116,50 +116,61 @@
                 <option>Puppet</option>
                 <option>Ansible</option>
               </select>
-            </div>
+            </div>            
             <div id="NX-API" style="display: block" class="c">
               <p class="mn">
                 Fill the information and convert the CLI Command's text file to NXAPI Switch OFF-Box python script.
               </p>
+              <form id="nxapi_cli_convert_form" method="post">{% csrf_token %}
               <div>
-                <input type="text" placeholder="Switch IP Address">
+                <input id="nxapi_code_ip" name="nxapi_code_ip" type="text" placeholder="Switch IP Address">
               </div>
               <div>
-                <input type="text" placeholder="Switch Username">
+                <input id="nxapi_code_username" name="nxapi_code_username" type="text" placeholder="Switch Username">
               </div>
               <div>
-                <input type="text" placeholder="Switch Password">
+                <input id="nxapi_code_password" name="nxapi_code_password" type="text" placeholder="Switch Password">
               </div>
               <div class="output">
-                <input type="text" placeholder="Output Filename">
+                <input id="nxapi_code_filename" name="nxapi_code_filename" type="text" placeholder="Output Filename">
               </div>
+              <input id="nxapi_code_file_content" name="nxapi_code_file_content" type="hidden">
+              <button id="nxapi_code_convert" class="download-l">Convert and Download</button>            
+              </form>
             </div>
             <div id="Puppet" class="c">
               <p class="mn">
                 Fill the information and convert the CLI Command's text file to Puppet manifest.
               </p>
+              <form id="puppet_cli_convert_form" method="post">
               <div>
-                <input type="text" placeholder="Classname">
+                <input id="puppet_code_classname" name="puppet_code_classname" type="text" placeholder="Classname">
               </div>
               <div class="output">
-                <input type="text" placeholder="Output Filename">
+                <input id="puppet_code_filename" name="puppet_code_filename" type="text" placeholder="Output Filename">
               </div>
+		      <input id="puppet_code_file_content" name="puppet_code_file_content" type="hidden">
+              <button id="puppet_code_convert" class="download-l">Convert and Download</button>   
+              </form>
             </div>
             <div id="Ansible" class="c">
               <p class="mn">
                 Fill the information and convert the CLI Command's text file to Ansible Playbook.
               </p>
+              <form id="ansible_cli_convert_form" method="post">
               <div>
-                <input type="text" placeholder="Description">
+                <input id="ansible_code_desc" name="ansible_code_desc" type="text" placeholder="Description">
               </div>
               <div>
-                <input type="text" placeholder="Host">
+                <input id="ansible_code_host" name="ansible_code_host" type="text" placeholder="Host">
               </div>
               <div class="output">
-                <input type="text" placeholder="Output Filename">
+                <input id="ansible_code_filename" name="ansible_code_filename" type="text" placeholder="Output Filename">
               </div>
-            </div>
-            <button class="download-l">Convert and Download</button>
+              <input id="ansible_code_file_content" name="ansible_code_file_content" type="hidden"><br>
+              <button id="ansible_code_convert" class="download-l">Convert and Download</button>  
+              </form>
+            </div>            
           </div>
         </div>
       </div>
@@ -187,7 +198,7 @@ jQuery("#generate_config_cli").click( function (){
         error_flag = true;
 	} 
 	if( error_flag == true) {
-		alert(error_msg);
+		alert(error_msg);			
 	}
 	else{
 		var fileInput = document.getElementById('generate-cli');
@@ -204,10 +215,147 @@ jQuery("#generate_config_cli").click( function (){
 	}	
 });
 
-        document.querySelector('.download-l').addEventListener('click', function () {
+jQuery("#nxapi_code_convert").click( function (){
+	var error_msg = "Please fill the below mentioned information.\n\n";	
+	var error_flag = false;
+	var code_file = jQuery("#code_file").val();	
+	if( code_file == 0) {
+    error_msg += " * Need to upload CLI Text file.\n";
+    error_flag = true;
+    }
+	var ext = jQuery('#code_file').val().split('.').pop().toLowerCase();
+	if(jQuery.inArray(ext, ['txt']) == -1) {
+		error_msg += " *  Invalid extension for file. Only 'txt' files are supported..\n";
+        error_flag = true;
+	}  
+	if( jQuery("#nxapi_code_ip").val() == 0) {
+    error_msg += " * Need to enter the Switch IP.\n";
+    error_flag = true;
+    } 
+	if( jQuery("#nxapi_code_username").val() == 0) {
+    error_msg += " * Need to enter the Switch Username.\n";
+    error_flag = true;
+    }   
+	if( jQuery("#nxapi_code_password").val() == 0) {
+    error_msg += " * Need to enter the Switch Password.\n";
+    error_flag = true;
+    }   
+	if( jQuery("#nxapi_code_filename").val() == 0) {
+    error_msg += " * Need to enter the Output Filename.\n";
+    error_flag = true;
+    }	
+	if( error_flag == true) {
+		alert(error_msg);
+		return false;
+	}
+	else{
+		var fileInput = document.getElementById('code_file');
+		var file = fileInput.files[0];
+		if (file.type.match("text")) {
+		  var reader = new FileReader();
+		  reader.onload = function(e) {
+			jQuery("#nxapi_code_file_content").val(reader.result);				
+			var converturl = "http://104.236.21.104:9090/nexus_config_nxapi/convert/?"+jQuery("form#nxapi_cli_convert_form").serialize();
+			document.location.href = converturl;
+			jQuery("form#nxapi_cli_convert_form")[0].reset();	
+			jQuery("#code_file").val('');	
+		  }
+		  reader.readAsText(file);  
+		  return false;
+		} 				
+	}	
+});
 
-        });
+jQuery("#puppet_code_convert").click( function (){
+	var error_msg = "Please fill the below mentioned information.\n\n";	
+	var error_flag = false;
+	var code_file = jQuery("#code_file").val();	
+	if( code_file == 0) {
+    error_msg += " * Need to upload CLI Text file.\n";
+    error_flag = true;
+    }
+	var ext = jQuery('#code_file').val().split('.').pop().toLowerCase();
+	if(jQuery.inArray(ext, ['txt']) == -1) {
+		error_msg += " *  Invalid extension for file. Only 'txt' files are supported..\n";
+        error_flag = true;
+	}  
+	if( jQuery("#puppet_code_classname").val() == 0) {
+    error_msg += " * Need to enter the Classname (eg: puppet filename without extension).\n";
+    error_flag = true;
+    }    
+	if( jQuery("#puppet_code_filename").val() == 0) {
+    error_msg += " * Need to enter the Output Filename.\n";
+    error_flag = true;
+    }	
+	if( error_flag == true) {
+		alert(error_msg);
+		return false;
+	}
+	else{
+		var fileInput = document.getElementById('code_file');
+		var file = fileInput.files[0];
+		if (file.type.match("text")) {
+		  var reader = new FileReader();
+		  reader.onload = function(e) {
+			jQuery("#puppet_code_file_content").val(reader.result);				
+			var converturl = "http://104.236.21.104:9090/nexus_config_puppet/convert/?"+jQuery("form#puppet_cli_convert_form").serialize();
+			document.location.href = converturl;
+			jQuery("form#puppet_cli_convert_form")[0].reset();	
+			jQuery("#code_file").val('');	
+		  }
+		  reader.readAsText(file);  
+		  return false;
+		} 				
+	}	
+});
 
+jQuery("#ansible_code_convert").click( function (){
+	var error_msg = "Please fill the below mentioned information.\n\n";	
+	var error_flag = false;
+	var code_file = jQuery("#code_file").val();	
+	if( code_file == 0) {
+    error_msg += " * Need to upload CLI Text file.\n";
+    error_flag = true;
+    }
+	var ext = jQuery('#code_file').val().split('.').pop().toLowerCase();
+	if(jQuery.inArray(ext, ['txt']) == -1) {
+		error_msg += " *  Invalid extension for file. Only 'txt' files are supported..\n";
+        error_flag = true;
+	}  
+	if( jQuery("#ansible_code_desc").val() == 0) {
+    error_msg += " * Need to enter the Description.\n";
+    error_flag = true;
+    } 
+	if( jQuery("#ansible_code_host").val() == 0) {
+    error_msg += " * Need to enter the host.\n";
+    error_flag = true;
+    }   
+	if( jQuery("#ansible_code_filename").val() == 0) {
+    error_msg += " * Need to enter the Output Filename.\n";
+    error_flag = true;
+    }	
+	if( error_flag == true) {
+		alert(error_msg);
+		return false;
+	}
+	else{
+		var fileInput = document.getElementById('code_file');
+		var file = fileInput.files[0];
+		if (file.type.match("text")) {
+		  var reader = new FileReader();
+		  reader.onload = function(e) {
+			jQuery("#ansible_code_file_content").val(reader.result);				
+			var converturl = "http://104.236.21.104:9090/nexus_config_ansible/convert/?"+jQuery("form#ansible_cli_convert_form").serialize();
+			document.location.href = converturl;
+			jQuery("form#ansible_cli_convert_form")[0].reset();	
+			jQuery("#code_file").val('');
+		  }
+		  reader.readAsText(file);  
+		  return false;
+		} 				
+	}	
+	});
+	
         var previous = '';
 
         $('#automation-format').on('focus', function () {
