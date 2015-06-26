@@ -138,12 +138,10 @@
             </div>
             <div id="Puppet" class="c">
               <p class="mn">
-                Fill the information and convert the CLI Command's text file to Puppet manifest.
+                Convert the CLI Command's text file to Puppet manifest.
               </p>
               <form id="puppet_cli_convert_form" method="post">
-              <div>
-                <input id="puppet_code_classname" name="puppet_code_classname" type="text" placeholder="Classname">
-              </div>
+                <input id="puppet_code_classname" name="puppet_code_classname" type="hidden">
                 <input id="puppet_code_filename" name="puppet_code_filename" type="hidden">
 		      <input id="puppet_code_file_content" name="puppet_code_file_content" type="hidden"><br>
               <button id="puppet_code_convert" class="download-l">Convert and Download</button>   
@@ -273,10 +271,12 @@ jQuery("#puppet_code_convert").click( function (){
 		error_msg += " *  Invalid extension for file. Only 'txt' files are supported..\n";
         error_flag = true;
 	}  
+	/*
 	if( jQuery("#puppet_code_classname").val() == 0) {
     error_msg += " * Need to enter the Classname (eg: puppet filename without extension).\n";
     error_flag = true;
-    }    
+    } 
+    */   
 	if( error_flag == true) {
 		alert(error_msg);
 		return false;
@@ -288,6 +288,7 @@ jQuery("#puppet_code_convert").click( function (){
 		if (file.type.match("text")) {
 		  var reader = new FileReader();
 		  reader.onload = function(e) {
+			jQuery("#puppet_code_classname").val(code_filename);
 			jQuery("#puppet_code_filename").val(code_filename);
 			jQuery("#puppet_code_file_content").val(reader.result);				
 			var converturl = "http://104.236.21.104:9090/nexus_config_puppet/convert/?"+jQuery("form#puppet_cli_convert_form").serialize();
