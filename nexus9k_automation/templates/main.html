@@ -90,8 +90,8 @@
           <div class="left">
             <p>Generate CLI configuration from the table above.</p>
             <div class="or"><span>or</span></div>
-            <div class="file-wrapper"><button>Upload Custom CSV Configuration</button><input type="file" id="generate-cli"></div>
-            <button class="generate">Generate CLI Configuration</button>
+            <div class="file-wrapper"><button>Upload Custom CSV Configuration</button><input type="file" id="generate-cli" name="config_csv"></div>
+            <button class="generate" id="generate_config_cli">Generate CLI Configuration</button>
           </div>
           <p class="clear desc">
             Once you have completed this step, you can either take the generated configuration
@@ -173,23 +173,36 @@
           window.location.href = "/static/nexus_config.csv";
         });
 
-        document.querySelector('.generate').addEventListener('click', function () {
-          file = document.querySelector('#generate-cli').files[0];
-
-          var reader = new FileReader();
-          reader.onload = function(event) {
-            $.ajax({
-              url: "http://104.236.21.104:9090/nexus_config_cli/convert/?config_csv=" + event.target.result,
-              method: "POST",
-              dataType: 'jsonp',
-              contentType: 'multipart/form-data',
-            }).done(function( data ) {
-              console.log(data);
-            });
-          }
-
-          reader.readAsText(file);
-        });
+jQuery("#generate_config_cli").click( function (){
+	var error_msg = " ";
+	var error_flag = false;
+	var code_file = jQuery("#generate-cli").val();	
+	if( code_file == 0) {
+    error_msg += " * Need to upload Config CSV file.\n";
+    error_flag = true;
+    }
+	var ext = jQuery('#generate-cli').val().split('.').pop().toLowerCase();
+	if(jQuery.inArray(ext, ['csv']) == -1) {
+		error_msg += " *  Invalid extension for file. Only 'csv' files are supported..\n";
+        error_flag = true;
+	} 
+	if( error_flag == true) {
+		alert(error_msg);
+	}
+	else{
+		var fileInput = document.getElementById('generate-cli');
+		var file = fileInput.files[0];
+		if (file.type.match("csv")) {
+		  var reader = new FileReader();
+		  reader.onload = function(e) {
+			  var csv = reader.result.replace(/\r?\n/g, '^');
+			var converturl = "http://104.236.21.104:9090/nexus_config_cli/convert/?config_csv="+csv;
+			document.location.href = converturl;
+		  }
+		  reader.readAsText(file);  
+		} 				
+	}	
+});
 
         document.querySelector('.download-l').addEventListener('click', function () {
 
