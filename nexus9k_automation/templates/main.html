@@ -1,23 +1,23 @@
 {% load staticfiles %}
 <!doctype html>
 <html>
-  <head>
-    <title>Nexus9k Automation Tool</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <script src="{% static 'node_modules/babel-core/browser-polyfill.min.js' %}"></script>
-    <script src="{% static 'js/jquery-1.11.2.min.js' %}"></script>
-  </head>
-  <body>
-    <header id="header">
-      <div class="container">
-        <img src="http://1-cloud.net/wp-content/uploads/2014/12/ext-e1423455969481.jpg">
-      </div>
-    </header>
-    <div id="content" class="container">
-      <div class="main-content">
-        <div id="get-started" class="">
-          <div class="overflow-hidden">
+<head>
+  <title>Nexus9k Automation Tool</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <script src="{% static 'node_modules/babel-core/browser-polyfill.min.js' %}"></script>
+  <script src="{% static 'js/jquery-1.11.2.min.js' %}"></script>
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <img src="http://1-cloud.net/wp-content/uploads/2014/12/ext-e1423455969481.jpg">
+    </div>
+  </header>
+  <div id="content" class="container">
+    <div class="main-content">
+      <div id="get-started" class="">
+        <div class="overflow-hidden">
             <!--<svg class="typology">
               <rect width="50" height="50" x="85" y="40" style="fill:#f2f2f2;stroke-width:1;stroke:#aaa" />
               <rect width="50" height="50" x="305" y="40" style="fill:#f2f2f2;stroke-width:1;stroke:#aaa" />
@@ -26,297 +26,330 @@
               <rect width="50" height="30" x="255" y="130" style="fill:#f2f2f2;stroke-width:1;stroke:#aaa" />
               <rect width="50" height="30" x="355" y="130" style="fill:#f2f2f2;stroke-width:1;stroke:#aaa" />
             </svg>
-            -->
-            <img src="{% static 'img/switch_topo.gif' %}" class="topology">
-            <div class="hidden">
-              <h2 class="gop">Automating Nexus 9000 Deployment</h2>
-              <p>
-                Now there's an easier way to provision your Data Center!
+          -->
+          <img src="{% static 'img/switch_topo.gif' %}" class="topology">
+          <div class="hidden">
+            <h2 class="gop">Automating Nexus 9000 Deployment</h2>
+            <p>
+              Now there's an easier way to provision your Data Center!
 
-                With the Nexus 9000 automation tool, you can generate CLI configurations for repetitive tasks that are based on Cisco best practices.
-              </p>
-              <p>
-                Simply select a configuration type, input your configuration variables (or use the ones provided), then copy/paste the generated CLI's to your Nexus 9000 switches.
-              </p>
-              <div class="conversion-options"><strong><small>Conversion options:</small> <div class="row" style="display: inline-block; margin-left: 5px;">
-                    <span class="cisco"><a target="_blank" href="http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/6-x/programmability/guide/b_Cisco_Nexus_9000_Series_NX-OS_Programmability_Guide/b_Cisco_Nexus_9000_Series_NX-OS_Programmability_Configuration_Guide_chapter_0101.pdf"><img src="{% static 'img/cisco.gif' %}"><span>NX-API</span></a></span>
-                    <span><a target="_blank" href="http://www.ansible.com/home"><img src="{% static 'img/ansible-logo.png' %}"></a></span>
-                    <span><a target="_blank" href="https://puppetlabs.com/"><img src="{% static 'img/puppet-labs-logo.png' %}"></a></span>
-                  </div></strong>
-                  <p>
-                    Optionally, convert the generated CLI configurations into syntax that can be consumed by Cisco NX-API,  Puppet, or Ansible for further customization.
-                  </p>
-              </div>
-            </div>
+              With the Nexus 9000 automation tool, you can generate CLI configurations for repetitive tasks that are based on Cisco best practices.
+            </p>
+            <p>
+              Simply select a configuration type, input your configuration variables (or use the ones provided), then copy/paste the generated CLI's to your Nexus 9000 switches.
+            </p>
+            <div class="conversion-options"><strong><small>Conversion options:</small> <div class="row" style="display: inline-block; margin-left: 5px;">
+              <span class="cisco"><a target="_blank" href="http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/6-x/programmability/guide/b_Cisco_Nexus_9000_Series_NX-OS_Programmability_Guide/b_Cisco_Nexus_9000_Series_NX-OS_Programmability_Configuration_Guide_chapter_0101.pdf"><img src="{% static 'img/cisco.gif' %}"><span>NX-API</span></a></span>
+              <span><a target="_blank" href="http://www.ansible.com/home"><img src="{% static 'img/ansible-logo.png' %}"></a></span>
+              <span><a target="_blank" href="https://puppetlabs.com/"><img src="{% static 'img/puppet-labs-logo.png' %}"></a></span>
+            </div></strong>
+            <p>
+              Optionally, convert the generated CLI configurations into syntax that can be consumed by Cisco NX-API,  Puppet, or Ansible for further customization.
+            </p>
+          </div>
+        </div>
             <!--
             <iframe class="push-right" width="400" height="225" src="https://www.youtube.com/embed/e3McMaHvlBY" frameborder="0" allowfullscreen></iframe>
-            -->
-          </div>
+          -->
         </div>
-        <h2 class="headline">Step 1: Select Configuration Type to Automate</h2>
-        <div class="add-padding">
-          <select id="automation-select">
-            <option>EVPN: VXLAN with MP-BGP Overlay</option>
-          </select>
-        </div>
-        <h2 class="headline singled">Step 2: Define Configuration Variables</h2>
-        <div class="add-padding">
-          <div class="overflow-auto">
-            <table spellcheck="false">
-              <thead>
-                {% for row in nexus_config|slice:"1:2" %}
-                  <tr>
-                  {% for cell in row %}
-                    <th>{{ cell }}</th>
-                  {% endfor %}
-                  </tr>
+      </div>
+      <h2 class="headline">Step 1: Select Configuration Type to Automate</h2>
+      <div class="add-padding">
+        <select id="automation-select">
+          <option>EVPN: VXLAN with MP-BGP Overlay</option>
+        </select>
+      </div>
+      <h2 class="headline singled">Step 2: Define Configuration Variables</h2>
+      <div class="add-padding">
+        <div class="overflow-auto">
+          <table spellcheck="false">
+            <thead>
+              {% for row in nexus_config|slice:"1:2" %}
+              <tr>
+                {% for cell in row %}
+                <th>{{ cell }}</th>
                 {% endfor %}
-              </thead>
-              <tbody>
-                {% for row in nexus_config|slice:"2:" %}
-                  <tr>
-                  {% for cell in row %}
-                    <td contenteditable="true">{{ cell }}</td>
-                  {% endfor %}
-                  </tr>
+              </tr>
+              {% endfor %}
+            </thead>
+            <tbody>
+              {% for row in nexus_config|slice:"2:" %}
+              <tr>
+                {% for cell in row %}
+                <td contenteditable="true">{{ cell }}</td>
                 {% endfor %}
-              </tbody>
-            </table>
-          </div>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
-        <button class="save-config">Save Configuration (CSV)</button>
-        <h2 class="headline">Step 3: Generate CLI Configuration</h2>
-        <div class="add-padding">
-          <div class="left">
-            <p>Generate CLI configuration from the table above.</p>
-            <div class="or"><span>or</span></div>
-            <div class="file-wrapper"><button>Upload Custom CSV Configuration</button><input type="file" id="generate-cli" name="config_csv"></div>
-            <button class="generate" id="generate_config_cli">Generate CLI Configuration</button>
-          </div>
-          <p class="clear desc">
-            Once you have completed this step, you can either take the generated configuration
-            files and copy/paste them onto your respective spine/leaf switches
-            or convert them to NX-API/Ansible/Puppet in the step below.
-          </p>
+      </div>
+      <button class="save-config">Save Configuration (CSV)</button>
+      <h2 class="headline">Step 3: Generate CLI Configuration</h2>
+      <div class="add-padding">
+        <div class="left">
+          <p>Generate CLI configuration from the table above.</p>
+          <div class="or"><span>or</span></div>
+          <div class="file-wrapper"><button>Upload Custom CSV Configuration</button><input type="file" id="generate-cli" name="config_csv"></div>
+          <button class="generate" id="generate_config_cli">Generate CLI Configuration</button>
         </div>
-        <h2 class="headline no-space">Step 4: Convert CLI Configuration to NX-API/Puppet/Ansible (Programmable Option)</h2>
-        <div class="hidden">
-          <div class="left">
-            <p>Convert using the CLI configuration generated above.</p>
-            <div class="or"><span>or</span></div>
-            <div class="file-wrapper"><button>Upload Custom CLI Configuration</button><input type="file" id="code_file" ></div>
-            <br><br>
+        <p class="clear desc">
+          Once you have completed this step, you can either take the generated configuration
+          files and copy/paste them onto your respective spine/leaf switches
+          or convert them to NX-API/Ansible/Puppet in the step below.
+        </p>
+      </div>
+      <h2 class="headline no-space">Step 4: Convert CLI Configuration to NX-API/Puppet/Ansible (Programmable Option)</h2>
+      <div class="hidden">
+        <div class="left">
+          <p>Convert using the CLI configuration generated above.</p>
+          <div class="or"><span>or</span></div>
+          <div class="file-wrapper"><button>Upload Custom CLI Configuration</button><input type="file" id="code_file" multiple></div>
+          <br><br>
+        </div>
+        <i class="fa fa-chevron-circle-right" style="float: left;"></i>
+        <div style="float: left; width: 500px;">
+          <div style="white-space: nowrap; margin-bottom: 10px">
+            <span>Select the format to convert the configuration to: </span>
+            <select id="automation-format" class="move-abit">
+              <option>NX-API</option>
+              <option>Puppet</option>
+              <option>Ansible</option>
+            </select>
           </div>
-          <i class="fa fa-chevron-circle-right" style="float: left;"></i>
-          <div style="float: left; width: 500px;">
-            <div style="white-space: nowrap; margin-bottom: 10px">
-              <span>Select the format to convert the configuration to: </span>
-              <select id="automation-format" class="move-abit">
-                <option>NX-API</option>
-                <option>Puppet</option>
-                <option>Ansible</option>
-              </select>
-            </div>            
-            <div id="NX-API" style="display: block" class="c">
-              <p class="mn">
-                Convert the CLI Command's text file to NXAPI Switch OFF-Box python script.
-              </p>
-              <form id="nxapi_cli_convert_form" method="post">
-                <input id="nxapi_code_filename" name="nxapi_code_filename" type="hidden">
+          <div id="NX-API" style="display: block" class="c">
+            <p class="mn">
+              Convert the CLI Command's text file to NXAPI Switch OFF-Box python script.
+            </p>
+            <form id="nxapi_cli_convert_form" method="post">
+              <input id="nxapi_code_filename" name="nxapi_code_filename" type="hidden">
               <input id="nxapi_code_file_content" name="nxapi_code_file_content" type="hidden">
-              <button id="nxapi_code_convert" class="download-l">Convert and Download</button>            
-              </form>
-            </div>
-            <div id="Puppet" class="c">
-              <p class="mn">
-                Convert the CLI Command's text file to Puppet manifest.
-              </p>
-              <form id="puppet_cli_convert_form" method="post">
-                <input id="puppet_code_classname" name="puppet_code_classname" type="hidden">
-                <input id="puppet_code_filename" name="puppet_code_filename" type="hidden">
-		      <input id="puppet_code_file_content" name="puppet_code_file_content" type="hidden">
-              <button id="puppet_code_convert" class="download-l">Convert and Download</button>   
-              </form>
-            </div>
-            <div id="Ansible" class="c">
-              <p class="mn">
-                Convert the CLI Command's text file to Ansible Playbook.
-              </p>
-              <form id="ansible_cli_convert_form" method="post">
-                <input id="ansible_code_desc" name="ansible_code_desc" type="hidden">
-                <input id="ansible_code_filename" name="ansible_code_filename" type="hidden">
+              <button id="nxapi_code_convert" class="download-l">Convert and Download</button>
+            </form>
+          </div>
+          <div id="Puppet" class="c">
+            <p class="mn">
+              Convert the CLI Command's text file to Puppet manifest.
+            </p>
+            <form id="puppet_cli_convert_form" method="post">
+              <input id="puppet_code_classname" name="puppet_code_classname" type="hidden">
+              <input id="puppet_code_filename" name="puppet_code_filename" type="hidden">
+              <input id="puppet_code_file_content" name="puppet_code_file_content" type="hidden">
+              <button id="puppet_code_convert" class="download-l">Convert and Download</button>
+            </form>
+          </div>
+          <div id="Ansible" class="c">
+            <p class="mn">
+              Convert the CLI Command's text file to Ansible Playbook.
+            </p>
+            <form id="ansible_cli_convert_form" method="post">
+              <input id="ansible_code_desc" name="ansible_code_desc" type="hidden">
+              <input id="ansible_code_filename" name="ansible_code_filename" type="hidden">
               <input id="ansible_code_file_content" name="ansible_code_file_content" type="hidden">
-              <button id="ansible_code_convert" class="download-l">Convert and Download</button>  
-              </form>
-            </div>            
+              <button id="ansible_code_convert" class="download-l">Convert and Download</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
-    <script src="{% static 'js/main-compiled.js' %}"></script>
-    <script>
-      (function () {
-        var current = '';
+  </div>
+  <script>
+    (function () {
+      var current = '';
 
-        document.querySelector('.save-config').addEventListener('click', function () {
-          window.location.href = "/static/nexus_config.csv";
+      document.querySelector('.save-config').addEventListener('click', function () {
+        window.location.href = "/static/nexus_config.csv";
+      });
+
+      var previous = '';
+      $('#automation-format').on('focus', function () {
+        previous = this.value;
+      }).change(function(e) {
+        $('#' + previous).hide();
+        $('#' + e.target.value).toggle();
+        previous = this.value;
+      });
+    }());
+
+    $(document).ready(function () {
+      $("#generate_config_cli").click(function (){
+        var error_msg = " ";
+        var error_flag = false;
+        var code_file = $("#generate-cli").val();
+
+        if (code_file == 0) {
+          error_msg += " * Need to upload Config CSV file.\n";
+          error_flag = true;
+        }
+
+        var ext = $('#generate-cli').val().split('.').pop().toLowerCase();
+
+        if ($.inArray(ext, ['csv']) == -1) {
+          error_msg += " *  Invalid extension for file. Only 'csv' files are supported..\n";
+          error_flag = true;
+        }
+
+        if (error_flag == true) {
+          alert(error_msg);
+        }
+        else {
+          var fileInput = document.getElementById('generate-cli');
+          var file = fileInput.files[0];
+
+          if (ext === 'csv') {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+              var csv = reader.result.replace(/\r?\n/g, '^');
+              var converturl = "http://104.236.21.104:9090/nexus_config_cli/convert/?config_csv="+csv;
+              document.location.href = converturl;
+            }
+            reader.readAsText(file);
+          }
+        }
+      });
+
+      $("#nxapi_code_convert").click( function (){
+        var error_msg = "Please check the error below.\n\n";
+        var error_flag = false;
+        var code_file = $("#code_file").val();
+
+        if( code_file == 0) {
+          error_msg += " * Need to upload CLI Text file.\n";
+          error_flag = true;
+        }
+
+        var ext = jQuery('#code_file').val().split('.').pop().toLowerCase();
+        if(jQuery.inArray(ext, ['txt']) == -1) {
+          error_msg += " *  Invalid extension for file. Only 'txt' files are supported..\n";
+          error_flag = true;
+        }
+
+        if(error_flag == true) {
+          alert(error_msg);
+          return false;
+        }
+        else {
+          var fileInput = document.getElementById('code_file');
+          var file = fileInput.files[0];
+          var code_filename = file.name.split('.')[0];
+
+          if (file.type.match("text")) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+              $("#nxapi_code_filename").val(code_filename);
+              $("#nxapi_code_file_content").val(reader.result);
+
+              var converturl = "http://104.236.21.104:9090/nexus_config_nxapi/convert/?"+jQuery("form#nxapi_cli_convert_form").serialize();
+
+              document.location.href = converturl;
+              $("form#nxapi_cli_convert_form")[0].reset();
+              $("#code_file").val('');
+            }
+
+            reader.readAsText(file);
+
+            return false;
+          }
+        }
+      });
+
+      $("#puppet_code_convert").click( function (){
+        var error_msg = "Please check the error below.\n\n";
+        var error_flag = false;
+        var code_file = $("#code_file").val();
+
+        if(code_file == 0) {
+          error_msg += " * Need to upload CLI Text file.\n";
+          error_flag = true;
+        }
+
+        var ext = $('#code_file').val().split('.').pop().toLowerCase();
+
+        if($.inArray(ext, ['txt']) == -1) {
+          error_msg += " *  Invalid extension for file. Only 'txt' files are supported..\n";
+          error_flag = true;
+        }
+
+        if(error_flag == true) {
+          alert(error_msg);
+          return false;
+        }
+        else {
+          var fileInput = document.getElementById('code_file');
+          var file = fileInput.files[0];
+          var code_filename = file.name.split('.')[0];
+
+          if (file.type.match("text")) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+              $("#puppet_code_classname").val(code_filename);
+              $("#puppet_code_filename").val(code_filename);
+              $("#puppet_code_file_content").val(reader.result);
+
+              var converturl = "http://104.236.21.104:9090/nexus_config_puppet/convert/?"+$("form#puppet_cli_convert_form").serialize();
+
+              document.location.href = converturl;
+              $("form#puppet_cli_convert_form")[0].reset();
+              $("#code_file").val('');
+            }
+
+            reader.readAsText(file);
+
+            return false;
+          }
+        }
+      });
+
+      $("#ansible_code_convert").click(function () {
+        var error_msg = "Please check the error below.\n\n";
+        var error_flag = false;
+        var code_file = $("#code_file").val();
+
+        if(code_file == 0) {
+          error_msg += " * Need to upload CLI Text file.\n";
+          error_flag = true;
+        }
+
+        var ext = $('#code_file').val().split('.').pop().toLowerCase();
+          if($.inArray(ext, ['txt']) == -1) {
+            error_msg += " *  Invalid extension for file. Only 'txt' files are supported..\n";
+            error_flag = true;
+          }
+
+          if(error_flag == true) {
+            alert(error_msg);
+
+            return false;
+          }
+          else {
+            var fileInput = document.getElementById('code_file');
+            var file = fileInput.files[0];
+            var code_filename = file.name.split('.')[0];
+
+            if (file.type.match("text")) {
+              var reader = new FileReader();
+
+              reader.onload = function(e) {
+                $("#ansible_code_desc").val(code_filename);
+                $("#ansible_code_filename").val(code_filename);
+                $("#ansible_code_file_content").val(reader.result);
+
+                var converturl = "http://104.236.21.104:9090/nexus_config_ansible/convert/?"+$("form#ansible_cli_convert_form").serialize();
+
+                document.location.href = converturl;
+                $("form#ansible_cli_convert_form")[0].reset();
+                $("#code_file").val('');
+              }
+
+              reader.readAsText(file);
+
+              return false;
+            }
+          }
         });
-
-jQuery("#generate_config_cli").click( function (){
-	var error_msg = " ";
-	var error_flag = false;
-	var code_file = jQuery("#generate-cli").val();	
-	if( code_file == 0) {
-    error_msg += " * Need to upload Config CSV file.\n";
-    error_flag = true;
-    }
-	var ext = jQuery('#generate-cli').val().split('.').pop().toLowerCase();
-	if(jQuery.inArray(ext, ['csv']) == -1) {
-		error_msg += " *  Invalid extension for file. Only 'csv' files are supported..\n";
-        error_flag = true;
-	} 
-	if( error_flag == true) {
-		alert(error_msg);			
-	}
-	else{
-		var fileInput = document.getElementById('generate-cli');
-		var file = fileInput.files[0];
-		if (file.type.match("csv")) {
-		  var reader = new FileReader();
-		  reader.onload = function(e) {
-			  var csv = reader.result.replace(/\r?\n/g, '^');
-			var converturl = "http://104.236.21.104:9090/nexus_config_cli/convert/?config_csv="+csv;
-			document.location.href = converturl;
-		  }
-		  reader.readAsText(file);  
-		} 				
-	}	
-});
-
-jQuery("#nxapi_code_convert").click( function (){
-	var error_msg = "Please check the error below.\n\n";	
-	var error_flag = false;
-	var code_file = jQuery("#code_file").val();	
-	if( code_file == 0) {
-    error_msg += " * Need to upload CLI Text file.\n";
-    error_flag = true;
-    }
-	var ext = jQuery('#code_file').val().split('.').pop().toLowerCase();
-	if(jQuery.inArray(ext, ['txt']) == -1) {
-		error_msg += " *  Invalid extension for file. Only 'txt' files are supported..\n";
-        error_flag = true;
-	}   
-	if( error_flag == true) {
-		alert(error_msg);
-		return false;
-	}
-	else{
-		
-		var fileInput = document.getElementById('code_file');
-		var file = fileInput.files[0];
-	    var code_filename = file.name.split('.')[0];
-		if (file.type.match("text")) {
-		  var reader = new FileReader();
-		  reader.onload = function(e) {
-			jQuery("#nxapi_code_filename").val(code_filename);
-			jQuery("#nxapi_code_file_content").val(reader.result);				
-			var converturl = "http://104.236.21.104:9090/nexus_config_nxapi/convert/?"+jQuery("form#nxapi_cli_convert_form").serialize();
-			document.location.href = converturl;
-			jQuery("form#nxapi_cli_convert_form")[0].reset();	
-			jQuery("#code_file").val('');	
-		  }
-		  reader.readAsText(file);  
-		  return false;
-		} 				
-	}	
-});
-
-jQuery("#puppet_code_convert").click( function (){
-	var error_msg = "Please check the error below.\n\n";	
-	var error_flag = false;
-	var code_file = jQuery("#code_file").val();	
-	if( code_file == 0) {
-    error_msg += " * Need to upload CLI Text file.\n";
-    error_flag = true;
-    }
-	var ext = jQuery('#code_file').val().split('.').pop().toLowerCase();
-	if(jQuery.inArray(ext, ['txt']) == -1) {
-		error_msg += " *  Invalid extension for file. Only 'txt' files are supported..\n";
-        error_flag = true;
-	}  
-	if( error_flag == true) {
-		alert(error_msg);
-		return false;
-	}
-	else{
-		var fileInput = document.getElementById('code_file');
-		var file = fileInput.files[0];
-	    var code_filename = file.name.split('.')[0];
-		if (file.type.match("text")) {
-		  var reader = new FileReader();
-		  reader.onload = function(e) {
-			jQuery("#puppet_code_classname").val(code_filename);
-			jQuery("#puppet_code_filename").val(code_filename);
-			jQuery("#puppet_code_file_content").val(reader.result);				
-			var converturl = "http://104.236.21.104:9090/nexus_config_puppet/convert/?"+jQuery("form#puppet_cli_convert_form").serialize();
-			document.location.href = converturl;
-			jQuery("form#puppet_cli_convert_form")[0].reset();	
-			jQuery("#code_file").val('');	
-		  }
-		  reader.readAsText(file);  
-		  return false;
-		} 				
-	}	
-});
-
-jQuery("#ansible_code_convert").click( function (){
-	var error_msg = "Please check the error below.\n\n";	
-	var error_flag = false;
-	var code_file = jQuery("#code_file").val();	
-	if( code_file == 0) {
-    error_msg += " * Need to upload CLI Text file.\n";
-    error_flag = true;
-    }
-	var ext = jQuery('#code_file').val().split('.').pop().toLowerCase();
-	if(jQuery.inArray(ext, ['txt']) == -1) {
-		error_msg += " *  Invalid extension for file. Only 'txt' files are supported..\n";
-        error_flag = true;
-	}  
-	if( error_flag == true) {
-		alert(error_msg);
-		return false;
-	}
-	else{
-		var fileInput = document.getElementById('code_file');
-		var file = fileInput.files[0];
-	    var code_filename = file.name.split('.')[0];
-		if (file.type.match("text")) {
-		  var reader = new FileReader();
-		  reader.onload = function(e) {
-			jQuery("#ansible_code_desc").val(code_filename);
-			jQuery("#ansible_code_filename").val(code_filename);
-			jQuery("#ansible_code_file_content").val(reader.result);				
-			var converturl = "http://104.236.21.104:9090/nexus_config_ansible/convert/?"+jQuery("form#ansible_cli_convert_form").serialize();
-			document.location.href = converturl;
-			jQuery("form#ansible_cli_convert_form")[0].reset();	
-			jQuery("#code_file").val('');
-		  }
-		  reader.readAsText(file);  
-		  return false;
-		} 				
-	}	
-	});
-	
-        var previous = '';
-
-        $('#automation-format').on('focus', function () {
-          previous = this.value;
-        }).change(function(e) {
-          $('#' + previous).hide();
-          $('#' + e.target.value).toggle();
-          previous = this.value;
-        });
-      }());
+      });
     </script>
   </body>
 </html>
