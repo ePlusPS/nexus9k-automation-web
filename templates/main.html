@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Nexus9k Automation Tool</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="../static/js/browser-polyfill.min.js"></script>
+    <script src="../static/js/papaparse.min.js"></script>
+    <script src="../static/js/request-compiled.js"></script>
+    <style>
+    .selector {
+      display: none !important;
+    }
+    </style>
+  </head>
+  <body>
+    <div style="background: white; height: 30px;"></div>
+    <article>
+      <header class="navy spotlight">
+        <div class="container spaced row">
+          <div>
+            <h1>Automating Nexus 9000 Deployment</h1>
+            <p>
+              Generate CLI configurations for repetitive tasks by selecting a
+              configuration type, inputing your configuration variables (or
+              use the ones provided based on Cisco best practices) to generate
+              CLI configurations.
+            </p>
+            <div class="conversion-options row">
+              <label>Automation Options:</label>
+              <div class="automation-logos row">
+                <span class="cisco">
+                  <a target="_blank" href="http://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/6-x/programmability/guide/b_Cisco_Nexus_9000_Series_NX-OS_Programmability_Guide/b_Cisco_Nexus_9000_Series_NX-OS_Programmability_Configuration_Guide_chapter_0101.pdf">
+                    <img src="../static/img/cisco.gif">
+                    <span>NX-API</span>
+                  </a>
+                </span>
+                <span class="ansible">
+                  <a target="_blank" href="http://www.ansible.com/home">
+                    <img src="../static/img/ansible-logo.png">
+                  </a>
+                </span>
+                <span class="puppet">
+                  <a target="_blank" href="https://puppetlabs.com/">
+                    <img src="../static/img/puppet-logo.gif">
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div style="margin-left: auto;">
+            <img src="../static/img/switch_topo_white2.png" width="165px">
+          </div>
+        </div>
+      </header>
+      <section class="container spaced">
+        <div class="configuration-type">
+          <label>Configuration Type:</label>
+          <select>
+            <option>EVPN: VXLAN with MP-BGP Overlay</option>
+          </select>
+        </div>
+        <div>
+          <div class="scroll-wrapper">
+            <div id="nexus-config-table-container" spellcheck="false"></div>
+          </div>
+          <div class="selector" id="file-selector">
+            <h2>Configurations</h2>
+            <div class="configuration-upload">
+              <div class="file-wrapper" style="width: 100%">
+                <button class="upload" id="upload-config-button">Upload</button>
+                <input type="file" id="upload-config-file">
+              </div>
+            </div>
+            <ul id="selector-files"></ul>
+          </div>
+        </div>
+        <div class="bottom">
+          <button class="simple" id="generate_config_cli">Generate CLI Configuration</button>
+        </div>
+        <p class="optional">
+          Once you have generated the CLI, you can either take the generated
+          configuration files and copy/paste them onto your respective spine/leaf
+          switches or convert them to NX-API/Ansible/Puppet in the step below.
+        </p>
+        <hr>
+        <div class="automation row">
+          <div>
+            <div class="file-wrapper" style="width: 191px;">
+              <button id="file_button">Upload CLI Configuration</button>
+              <input type="file" id="code_file">
+            </div>
+            <p style="width: 191px; font-size: 15px; margin-top: 18px;">
+              Unzip the generated CLI and upload an individual .txt file.
+            </p>
+          </div>
+          <i class="fa fa-chevron-circle-right"></i>
+          <div style="position: relative; flex-grow: 1;">
+            <div class="automation-select">
+              <label>
+                Convert to:
+              </label>
+              <select id="automation-select">
+                <option>NX-API</option>
+                <option>Puppet</option>
+                <option>Ansible</option>
+              </select>
+            </div>
+            <div id="desc">
+              <div id="NX-API" class="none">
+                <div class="desc-nx-api desc">
+                  Convert the CLI Command's text file to NXAPI OFF-Box python script.
+                </div>
+                <form id="nxapi_cli_convert_form" method="post">
+                  <input id="nxapi_code_filename" name="nxapi_code_filename" type="hidden">
+                  <input id="nxapi_code_file_content" name="nxapi_code_file_content" type="hidden">
+                  <button id="nxapi_code_convert" class="automation-button simple">Convert and Download</button>
+                </form>
+              </div>
+              <div id="Puppet" class="none">
+                <div class="desc-puppet desc">
+                  Convert the CLI Command's text file to Puppet manifest.
+                </div>
+                <form id="puppet_cli_convert_form" method="post">
+                  <input id="puppet_code_classname" name="puppet_code_classname" type="hidden">
+                  <input id="puppet_code_filename" name="puppet_code_filename" type="hidden">
+                  <input id="puppet_code_file_content" name="puppet_code_file_content" type="hidden">
+                  <button id="puppet_code_convert" class="automation-button simple">Convert and Download</button>
+                </form>
+              </div>
+              <div id="Ansible" class="none">
+                <div class="desc-ansible desc">
+                  Convert the CLI Command's text file to Ansible Playbook.
+                </div>
+                <form id="ansible_cli_convert_form" method="post">
+                  <input id="ansible_code_desc" name="ansible_code_desc" type="hidden">
+                  <input id="ansible_code_filename" name="ansible_code_filename" type="hidden">
+                  <input id="ansible_code_file_content" name="ansible_code_file_content" type="hidden">
+                  <button id="ansible_code_convert" class="automation-button simple">Convert and Download</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
+    <script src="../static/js/main-compiled.js?v=1"></script>
+  </body>
+</html>

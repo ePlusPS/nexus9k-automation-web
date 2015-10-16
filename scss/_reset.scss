@@ -1,0 +1,120 @@
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+body,
+%headings,
+form,
+p {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+iframe {
+  border: 0;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+%lists {
+  margin: 0;
+  padding: 0;
+}
+
+select {
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+small {
+  font-size: 80%;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+textarea {
+  overflow: auto;
+}
+
+[hidden] {
+  display: none;
+}
+
+
+//---------- Specific ----------
+
+// ie10
+a {
+  background-color: transparent;
+
+  // ie 8/9/10
+  img {
+    border: 0;
+  }
+}
+
+// ie8/9
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+
+// ff 4+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+// safari, chrome
+dfn {
+  font-style: italic;
+}
+
+// iOS
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+// ff
+input {
+  line-height: normal;
+}
+
+// ie 8/9/10
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+// ie 8/9
+mark {
+  background: #ff0;
+  color: #000;
+}

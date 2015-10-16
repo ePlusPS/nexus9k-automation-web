@@ -1,0 +1,12 @@
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+body {
+  color: #434343;
+  font: 16px/1 'myriad pro';
+}

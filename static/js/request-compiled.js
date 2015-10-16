@@ -1,0 +1,1 @@
+'use strict';function request(url){var method=arguments[1] === undefined?'GET':arguments[1];return new Promise(function(resolve, reject){var xhr=new XMLHttpRequest();xhr.open(method, url);xhr.onload = function(e){if(this.status == 200){resolve(this.responseText);}else {reject(this.status);}};xhr.onerror = function(){reject(this.status);};xhr.send();});}
